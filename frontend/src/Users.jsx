@@ -4,6 +4,7 @@ import Spinner from "./Component/Spinner"
 
 const Users = () => {
     const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+    console.log('Url',BASE_URL);
     const [users, setUsers] = useState([]);
     const [isUsers, setIsUsers] = useState(false);
     const [isModalOpen, setModalOpen] = useState(false);
