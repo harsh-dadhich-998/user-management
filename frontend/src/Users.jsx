@@ -3,6 +3,7 @@ import { useState } from "react";
 import Spinner from "./Component/Spinner"
 
 const Users = () => {
+    const BASE_URL = import.meta.env.VITE_BACKEND_URL;
     const [users, setUsers] = useState([]);
     const [isUsers, setIsUsers] = useState(false);
     const [isModalOpen, setModalOpen] = useState(false);
@@ -33,7 +34,7 @@ const Users = () => {
         if (!isUpdate) {
                     
             try {
-                const response = await fetch(`${process.env.REACT_APP_Backend_Url}/api/users`, {
+                const response = await fetch(`${BASE_URL}/api/users`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json', // Important!
@@ -61,7 +62,7 @@ const Users = () => {
         }
         else {
             try {
-                const response = await fetch(`${process.env.REACT_APP_Backend_Url}/api/users/${formData.id}`, {
+                const response = await fetch(`${BASE_URL}/api/users/${formData.id}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json', // Important!
@@ -102,7 +103,7 @@ const Users = () => {
     async function getUserById(id) {
         
         try {
-            const response = await fetch(`${process.env.REACT_APP_Backend_Url}/api/users/${id}`)
+            const response = await fetch(`${BASE_URL}/api/users/${id}`)
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -124,7 +125,7 @@ const Users = () => {
     }
     async function getAllusers() {
         try {
-            const response = await fetch(`${process.env.REACT_APP_Backend_Url}/api/users`)
+            const response = await fetch(`${BASE_URL}/api/users`)
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -141,7 +142,7 @@ const Users = () => {
         console.log(id);
         setLoading(true);
         try {
-            const response = await fetch(`${process.env.REACT_APP_Backend_Url}/api/users/${id}`, {
+            const response = await fetch(`${BASE_URL}/api/users/${id}`, {
                 method: 'DELETE',
             });
 
