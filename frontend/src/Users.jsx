@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import Spinner from "./Component/Spinner"
+require('dotenv').config();
 const Users = () => {
     const [users, setUsers] = useState([]);
     const [isUsers, setIsUsers] = useState(false);
@@ -32,7 +33,7 @@ const Users = () => {
         if (!isUpdate) {
                     
             try {
-                const response = await fetch('http://localhost:5000/api/users', {
+                const response = await fetch(`${process.env.Backend_Url}/api/users`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json', // Important!
@@ -60,7 +61,7 @@ const Users = () => {
         }
         else {
             try {
-                const response = await fetch(`http://localhost:5000/api/users/${formData.id}`, {
+                const response = await fetch(`${process.env.Backend_Url}/api/users/${formData.id}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json', // Important!
@@ -101,7 +102,7 @@ const Users = () => {
     async function getUserById(id) {
         
         try {
-            const response = await fetch(`http://localhost:5000/api/users/${id}`)
+            const response = await fetch(`${process.env.Backend_Url}/api/users/${id}`)
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -123,7 +124,7 @@ const Users = () => {
     }
     async function getAllusers() {
         try {
-            const response = await fetch('http://localhost:5000/api/users')
+            const response = await fetch(`${process.env.Backend_Url}/api/users`)
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -140,7 +141,7 @@ const Users = () => {
         console.log(id);
         setLoading(true);
         try {
-            const response = await fetch(`http://localhost:5000/api/users/${id}`, {
+            const response = await fetch(`${process.env.Backend_Url}/api/users/${id}`, {
                 method: 'DELETE',
             });
 
