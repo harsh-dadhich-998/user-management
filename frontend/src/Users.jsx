@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import Spinner from "./Component/Spinner"
-require('dotenv').config();
+import dotenv from 'dotenv';
+
 const Users = () => {
+    dotenv.config();
     const [users, setUsers] = useState([]);
     const [isUsers, setIsUsers] = useState(false);
     const [isModalOpen, setModalOpen] = useState(false);
