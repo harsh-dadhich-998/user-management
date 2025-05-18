@@ -23,6 +23,12 @@ const Users = () => {
 
   const openModal = () => setModalOpen(true);
   const closeModal = () => {
+     setFormData({
+      id: 0,
+      name: "",
+      email: "",
+      gender: "",
+    });
     setModalOpen(false);
   };
   const handleChange = (e) => {
@@ -87,8 +93,8 @@ const Users = () => {
     setLoading(true);
     getAllusers();
     setLoading(false);
-    console.log(users.length);
-    console.log("FormData", formData);
+    // console.log(users.length);
+    // console.log("FormData", formData);
   }, []);
 
   async function getUserById(id) {
